@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{url}
 \usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{mathtools}
 
 \setlength{\parindent}{0in}
 \setlength{\oddsidemargin}{0in}
@@ -175,6 +176,86 @@
         & \text{positive semidéfinie. $ f $ n'est pas convexe. \qed }
     \end{flalign*}
 
+\subsection*{Exercice 5}
 
+\begin{enumerate}
+    \item
+    \begin{flalign*}
+        & f: x, y \rightarrow x^2 + y^2 && \\
+        & c_1: x, y \rightarrow 1 - x - y && \\
+        & c_2: x, y \rightarrow y - 2 && \\
+        & c_3: x, y \rightarrow x - y^2 && \\ && \\
+        & \mathcal{L}: x, y, \lambda_1, \lambda_2, \lambda_3 \rightarrow x^2 + y^2 + \lambda_1 c_1 + \lambda_2 c_2 + \lambda_3 c_3 && \\
+    \end{flalign*}
+    Conditions KKT:
+    \begin{flalign*}
+        & \underset{x, y}{\nabla} \mathcal{L}(x^*, y^*, \lambda_1^*, \lambda_2^*, \lambda_3^*) = 0 && \\
+        & x^* + y^* \geq 1 && \\
+        & y^* \leq 2 && \\
+        & y^{*2} \geq x^* && \\
+        & \lambda_{1, 2, 3}^* \geq 0 && \\
+        & \lambda_1^* c_1(x^*, y^*) = 0, \dots \lambda_3^* c_3(x^*, y^*) = 0 && \\ && \\
+        & \underset{x, y}{\nabla} \mathcal{L}(x^*, y^*, \lambda_1^*, \lambda_2^*, \lambda_3^*) = 0_2 = 
+        \begin{dcases}
+            2x - \lambda_1 + \lambda_3 = 0 \\
+            2y - \lambda_1 + \lambda_2 - 2y\lambda_3 = 0
+        \end{dcases} && \\
+    \end{flalign*}
+
+    \item 
+    \begin{flalign*}
+        & \text{On a $ 8 $ différents cas } (\lambda_1^* = \lambda_2^* = \lambda_3^* = 0, \dots \lambda_1^*, \lambda_2^*, \lambda_3^* \neq 0) && \\ && \\
+        & \text{Pour } \lambda_1^* = \lambda_2^* = \lambda_3^* = 0, \text{ il n'existe aucun solution car } x^* = y^* = 0 && \\
+        & \text{contredit le condition KKT } x^* + y^* \geq 1. && \\ && \\
+        & \text{Cas 2: } \lambda_1^* \neq 0, \lambda_2^* = \lambda_3^* = 0 && \\
+        & \Rightarrow x = -\frac{\lambda_1^*}{2}, y = -\frac{\lambda_1^*}{2} && \\
+        & \text{Substitution: } x + y - 1 = 0 = -\frac{\lambda_1^*}{2} -\frac{\lambda_1^*}{2} - 1 = 0 && \\
+        & \Rightarrow \lambda_1 = -1 < 0 \text{ (Contradiction de condition KKT) } && \\
+        & \text{Cas 3: } \lambda_1^* = 0, \lambda_2^* \neq 0, \lambda_3^* = 0 && \\
+        & \Rightarrow x = 0, y = -\frac{\lambda_2^*}{2} && \\
+        & \text{Substitution: } 0 -\frac{\lambda_1^*}{2} - 1 = 0  \Leftrightarrow -\frac{\lambda_1^*}{2} = 1 && \\
+        & \Rightarrow \lambda_1 = -2 < 0 \text{ (Contradiction de condition KKT) } && \\
+        & \text{Cas 4: } \lambda_1^* = 0, \lambda_2^* = 0, \lambda_3^* \neq 0 && \\
+        & \Rightarrow x = -\frac{\lambda_3^*}{2} && \\
+        & 2y - 2y\lambda_3^* = 0 \Leftrightarrow y(2 - 2\lambda_3^*) = 0 && \\
+        & \text{Si } y = 0, \text{ violation de } x + y \geq 1 && \\ % TODO
+        & \text{Cas 5: } \lambda_1^* \neq 0, \lambda_2^* \neq 0, \lambda_3^* = 0 && \\
+        & \Rightarrow x = \frac{\lambda_1^*}{2} && \\
+        & \lambda_1^* = 2, \lambda_2^* = 6, y = 2 && \\
+        & \Rightarrow x = -1, y = 2 && \\
+        & \text{Cas 6: } \lambda_1^* \neq 0, \lambda_2^* = 0, \lambda_3^* \neq 0 && \\
+        & \Rightarrow x = \frac{3 - \sqrt{5}}{2}, y = \frac{\sqrt{5} - 1}{2}&& \\
+    \end{flalign*} \newpage
+    \begin{flalign*}
+        & \text{Cas 7: } \lambda_1^* = 0, \lambda_2^* \neq 0, \lambda_3^* \neq 0 && \\
+        & \Rightarrow x = y^2, y - 2 = 0 && \\
+        & \Rightarrow x = 4, y = 2 && \\
+        & \text{Cas 8: } \lambda_1^* \neq 0, \lambda_2^* \neq 0, \lambda_3^* \neq 0 && \\
+        & \text{ Pas de solution, car } x = 4, y = 2 \text{ contredit contrainte } x + y - 1 = 0.
+    \end{flalign*}
+
+    \item On peut montrer la convexité de $ f $ avec la Hessienne:
+
+    \begin{flalign*}
+        & H(f) = \begin{bmatrix}
+            2 & 0 \\
+            0 & 2
+        \end{bmatrix} && \\
+        & \text{Car cette matrice est positive définie, alors $ f $ est convexe.} && \\
+        & f(-1, 2) = 5, f(4, 2) = 20, f(\frac{3 - \sqrt{5}}{2}, \frac{\sqrt{5} - 1}{2}) = 5 - 2\sqrt{5}
+    \end{flalign*}
+    Car $ \frac{3 - \sqrt{5}}{2}, \frac{\sqrt{5} - 1}{2} $ est un minimum local et $ f $ est une fonction convexe, il s'agit du minimum global. Les autres points sont des maximums locales. \newpage
+    \item Esquisse et visualization avec matplotlib
+    \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Untitled design(1).png}
+    \caption{Esquisse du graphe}
+    \end{figure}
+    \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.4\textwidth]{Screenshot from 2024-09-24 08-28-34.png}
+    \caption{Visualization avec matplotlib}
+    \end{figure}
+\end{enumerate}
 
 \end{document}
