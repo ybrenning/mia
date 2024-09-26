@@ -1,9 +1,12 @@
 DOCNAME=$1
-pdflatex $DOCNAME.tex
-bibtex $DOCNAME.aux
-pdflatex $DOCNAME.tex
-pdflatex $DOCNAME.tex
+DIR="tex/"
 
-rm *.blg *.bbl *.aux *.log *.out *.toc
+pdflatex -output-directory=.. $DIR$DOCNAME.tex
+bibtex -output-directory=.. $DIR$DOCNAME.aux
+pdflatex -output-directory=.. $DIR$DOCNAME.tex
+pdflatex -output-directory=.. $DIR$DOCNAME.tex
+
+rm $DIR*.blg $DIR*.bbl $DIR*.aux $DIR*.log $DIR*.out $DIR*.toc
+rm *.log *.aux
 
 open $DOCNAME.pdf
