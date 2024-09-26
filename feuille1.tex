@@ -176,6 +176,8 @@
         & \text{positive semidéfinie. $ f $ n'est pas convexe. \qed }
     \end{flalign*}
 
+\newpage
+
 \subsection*{Exercice 5}
 
 \begin{enumerate}
@@ -235,7 +237,6 @@
     \end{flalign*}
 
     \item On peut montrer la convexité de $ f $ avec la Hessienne:
-
     \begin{flalign*}
         & H(f) = \begin{bmatrix}
             2 & 0 \\
@@ -244,17 +245,12 @@
         & \text{Car cette matrice est positive définie, alors $ f $ est convexe.} && \\
         & f(-1, 2) = 5, f(4, 2) = 20, f(\frac{3 - \sqrt{5}}{2}, \frac{\sqrt{5} - 1}{2}) = 5 - 2\sqrt{5}
     \end{flalign*}
-    Car $ \frac{3 - \sqrt{5}}{2}, \frac{\sqrt{5} - 1}{2} $ est un minimum local et $ f $ est une fonction convexe, il s'agit du minimum global. Les autres points sont des maximums locales. \newpage
-    \item Esquisse et visualization avec matplotlib
-    \begin{figure}[htbp]
+    Car $ \frac{3 - \sqrt{5}}{2}, \frac{\sqrt{5} - 1}{2} $ est un minimum local et $ f $ est une fonction convexe, il s'agit du minimum global. Les autres points sont des maximums locales. \\
+    \item Avec un script de Python, on peut visualiser le hyperplan et les points critiques de la fonction $f$ avec les contraintes $c_1, c_2, c_3$. \\
+    \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.5\textwidth]{Untitled design(1).png}
-    \caption{Esquisse du graphe}
-    \end{figure}
-    \begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.4\textwidth]{Screenshot from 2024-09-24 08-28-34.png}
-    \caption{Visualization avec matplotlib}
+    \includegraphics[width=0.5\textwidth]{hyperplane.png}
+    \caption{Visualization de $f$ sous les contraintes $c_1, c_2, c_3$}
     \end{figure}
 \end{enumerate}
 
