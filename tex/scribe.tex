@@ -1,0 +1,506 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{amsfonts}
+
+\title{Scribe séance 4}
+\author{Noms}
+
+\begin{document}
+\maketitle
+
+\section{Le Problème Primal}
+
+Nous considérons le problème d'optimisation suivant :
+
+\begin{align*}
+\text{Minimiser} \quad & f(x) \\
+\text{Sous les contraintes} \quad & g_j(x) \leq 0, \quad j = 1, \dotsc, r \\
+& x \in E \subseteq \mathbb{R}^n
+\end{align*}
+
+où :
+\begin{itemize}
+    \item $f: \mathbb{R}^n \to \mathbb{R}$ est la fonction objectif.
+    \item $g_j: \mathbb{R}^n \to \mathbb{R}$ sont les fonctions de contrainte.
+\end{itemize}
+
+La valeur optimale du problème primal est :
+
+\[
+f^* = \inf_{x \in E, \, g_j(x) \leq 0} f(x)
+\]
+
+\section{Le Lagrangien Associé}
+
+Nous définissons la fonction lagrangienne :
+
+\[
+L(x, \mu) = f(x) + \sum_{j=1}^r \mu_j g_j(x)
+\]
+
+où $\mu = (\mu_1, \dotsc, \mu_r)$ sont les multiplicateurs de Lagrange, avec $\mu_j \geq 0$.
+
+\section{La Fonction Duale}
+
+La fonction duale $q(\mu)$ est définie par :
+
+\[
+q(\mu) = \inf_{x \in E} L(x, \mu)
+\]
+
+Cette fonction représente la valeur minimale du lagrangien par rapport à $x$ pour un $\mu$ donné.
+
+\section{Le Problème Dual}
+
+Le problème dual est :
+
+\begin{align*}
+\text{Maximiser} \quad & q(\mu) \\
+\text{Sous les contraintes} \quad & \mu_j \geq 0, \quad j = 1, \dotsc, r
+\end{align*}
+
+\section{La Valeur Optimale du Problème Dual}
+
+La valeur optimale du problème dual est :
+
+\[
+g^* = \sup_{\mu \geq 0} q(\mu)
+\]
+
+\subsection{Résultat clé}
+
+Dualité faible : Pour tout $x$ admissible et $\mu$ admissible, on a $q(\mu) \leq f(x)$. Par conséquent :
+
+\[
+g^* = \sup_{\mu \geq 0} q(\mu) \leq \inf_{x \in E, \, g_j(x) \leq 0} f(x) = f^*
+\]
+
+Cela implique que la valeur optimale du problème dual est une borne inférieure de la valeur optimale du problème primal.
+
+\section{Propriétés de Convexité}
+
+\begin{itemize}
+    \item Le domaine $D_q$ de la fonction duale $q$ est convexe.
+    \item La fonction duale $q$ est concave sur $D_q$.
+\end{itemize}
+
+Cela s'explique par le fait que $q$ est l'infimum de fonctions affines (linéaires) en $\mu$, ce qui préserve les propriétés de convexité.
+
+\section{Dualité Forte et Qualification des Contraintes}
+
+Sous certaines conditions, appelées qualifications des contraintes, la dualité forte s'applique, c'est-à-dire :
+
+\[
+g^* = f^*
+\]
+
+\subsection{Exemple}
+
+Si $f$ est convexe et les fonctions de contrainte $g_j$ sont linéaires (affines), alors la dualité forte s'applique et il n'y a pas d'écart dual.
+
+\section{Conditions d'Optimalité (Conditions de Karush-Kuhn-Tucker)}
+
+Proposition (Conditions KKT) : Supposons que $f$ et $g_j$ sont différentiables. Les points $x^*$ et $\mu^*$ sont optimaux pour le problème primal (respectivement dual) si et seulement s'ils satisfont :
+
+\begin{enumerate}
+    \item Faisabilité Primal : 
+    \[
+    g_j(x^*) \leq 0, \quad \text{pour tout } j = 1, \dotsc, r
+    \]
+    \item Faisabilité Duale : 
+    \[
+    \mu_j^* \geq 0, \quad \text{pour tout } j = 1, \dotsc, r
+    \]
+    \item Complémentarité :
+    \[
+    \mu_j^* \cdot g_j(x^*) = 0, \quad \text{pour tout } j = 1, \dotsc, r
+    \]
+    \item Stationnarité : 
+    \[
+    \nabla f(x^*) + \sum_{j=1}^r \mu_j^* \nabla g_j(x^*) = 0
+    \]
+\end{enumerate}
+
+\item Complémentarité : 
+    \[
+    \mu_j^* \cdot g_j(x^*) = 0, \quad \text{pour tout } j = 1, \dotsc, r
+    \]
+    
+\item Stationnarité : 
+    \[
+    \nabla f(x^*) + \sum_{j=1}^r \mu_j^* \nabla g_j(x^*) = 0
+    \]
+
+Ces conditions sont nécessaires pour l'optimalité, et si $f$ et $g_j$ sont convexes, elles sont également suffisantes.
+
+\section{Interprétation}
+
+\begin{itemize}
+    \item \textbf{Faisabilité Primal} : $x^*$ satisfait les contraintes du problème initial.
+    \item \textbf{Faisabilité Duale} : Les multiplicateurs $\mu^*$ sont non négatifs.
+    \item \textbf{Complémentarité} : Si une contrainte n'est pas active ($g_j(x^*) < 0$), alors le multiplicateur correspondant est nul ($\mu_j^* = 0$).
+    \item \textbf{Stationnarité} : Le gradient du lagrangien par rapport à $x$ est nul en $x^*$, indiquant un point critique.
+\end{itemize}
+
+\section{Problèmes Généraux d'Estimation}
+
+\subsection{Modèle Statistique}
+
+\begin{itemize}
+    \item \textbf{Modèle} : Une famille de distributions de probabilité $\mathcal{P}$.
+    \item \textbf{Observations} : $O \sim P$, où $P \in \mathcal{P}$.
+    \item \textbf{But} : Estimer une fonctionnelle $f(P)$ à partir des observations $O$, c'est-à-dire trouver un estimateur $\hat{f}(O)$ tel que $\hat{f}(O) \approx f(P)$.
+\end{itemize}
+
+\subsection{Fonctionnelle et Estimateur}
+
+\begin{itemize}
+    \item \textbf{Fonctionnelle} : $f: \mathcal{P} \rightarrow E$, où $E$ est un espace cible (par exemple, $\mathbb{R}$ ou $\mathbb{R}^d$).
+    \item \textbf{Estimateur} : $\hat{f} : O \rightarrow E$.
+\end{itemize}
+
+\section{Deux Questions Fondamentales en Estimation}
+
+\begin{enumerate}
+    \item Trouver un estimateur efficace sur le plan calculatoire : Développer un estimateur $\hat{f}$ qui est computationnellement réalisable et pratique à utiliser.
+    \item Évaluer la qualité statistique de l'estimateur : Analyser dans quelle mesure $\hat{f}(O)$ approche $f(P)$, en termes de biais, variance et risque.
+\end{enumerate}
+
+Pour les cas où nous estimons une distribution, cela implique :
+
+\begin{itemize}
+    \item Calculs de probabilités (par exemple, estimation du maximum de vraisemblance).
+    \item Contrôle des moments ou des queues de distribution (par exemple, évaluation du biais, de la variance, du risque attendu).
+\end{itemize}
+
+
+\subsection{Exemple A : Estimation du Maximum de Vraisemblance}
+
+\begin{itemize}
+    % Définer H = espace de recherche/d'hypothèse?
+    \item \textbf{Modèle Statistique} : Une famille paramétrique de distributions $\mathcal{P} = \{ P_w \mid w \in W \}$, où $W$ est l'ensemble des paramètres.
+    \item \textbf{Observations} : $O \sim P_w$ pour un certain $w \in W$.
+    \item \textbf{Fonctionnelle à estimer} : $f(P_w) = w$, c'est-à-dire, nous souhaitons estimer le paramètre $w$ lui-même.
+    \item \textbf{Densité} : $p_w$ est la densité de probabilité associée à $P_w$ (par rapport à une mesure fixe).
+\end{itemize}
+
+\textbf{Estimateur du Maximum de Vraisemblance} :
+
+\[
+\hat{f}_H(O) = \underset{w \in W}{\arg\max} \, p_w(O)
+\]
+
+Nous choisissons le paramètre $w$ qui maximise la vraisemblance des observations $O$.
+
+\textbf{Évaluation de l'estimateur} :
+
+\begin{itemize}
+    \item \textbf{Biais} : Différence entre la valeur moyenne de l'estimateur et le véritable paramètre.
+    \item \textbf{Variance} : Variabilité de l'estimateur autour de sa moyenne.
+    \item \textbf{Risque} : Mesure globale de l'erreur de l'estimateur, souvent définie via une fonction de perte.
+\end{itemize}
+
+\subsection{Exemple B : Qualité Statistique d'un Estimateur}
+
+\textbf{Biais} :
+
+\[
+b_P(\hat{f}) = \mathbb{E}_{O \sim P}[\hat{f}(O)] - f(P)
+\]
+
+\textbf{Amplitude du biais} : 
+\[
+\| b_P(\hat{f}) \|^2
+\]
+
+
+\subsection{Variance}
+% Définition de variance différent dans slide 15:
+% \text{Var}_P(\hat{f}) = \ŧext{Var}_{O \sim P}[\hat{f}(O]
+
+\[
+\text{Var}_P(\hat{f}) = \mathbb{E}_{O \sim P} \left[ \left\| \hat{f}(O) - \mathbb{E}_{O \sim P}[\hat{f}(O)] \right\|^2 \right]
+\]
+
+\subsection{Risque}
+
+\[
+R_P(\hat{f}) = \mathbb{E}_{O \sim P} [ \ell(f(P), \hat{f}(O)) ]
+\]
+
+\begin{itemize}
+    \item \textbf{Fonction de coût} : $\ell : x, y \mapsto \| x - y \|_2^2$
+\end{itemize}
+
+\subsection{Décomposition du risque}
+
+\[
+R_P(\hat{f}) = \text{Var}_P(\hat{f}) + \| b_P(\hat{f}) \|_2^2
+\]
+
+Cette décomposition montre que le risque total est la somme de la variance et du carré du biais de l'estimateur.
+
+\section{Probabilité et Théorie de la Mesure}
+
+\subsection{Espace de Probabilité}
+
+\begin{itemize}
+    \item \textbf{Univers} ($\Omega$): Désigne l'ensemble de tous les résultats possibles liés à une expérience aléatoire.
+    \item \textbf{Événement} ($A$): L'événement $A \subset \Omega $ est un sous-ensemble de l'univers, ce qui le définit comme un ensemble de résultats potentiels.
+    \item \textbf{Ensemble des événements (Tribu $\mathcal{F})$} : Représente une collection d'ensembles d'événements $ \mathcal{F} \subset \mathcal{P}(\Omega) $ qui forme un espace de probabilités. Cette collection doit être stable sous les unions dénombrables et par compléments.
+    \item \textbf{Mesure de probabilité} : La mesure de probabilité est une fonction qui attribue une valeur numérique à un événement, représentant la chance que cet événement se produise. La probabilité d'un événement varie de 0 (l'événement ne peut pas se produire) à 1 (l'événement se produira sûrement). \\ \\
+    On peut donc l'exprimer par $P : \mathcal{F} \rightarrow \mathbb{R}$, vérifiant :
+    \begin{itemize}
+        \item $ \forall A \in \mathcal{F}, P(A) \geq 0 $
+        \item $P(\Omega) = 1$ (La somme des probabilités de tous les événements possibles dans un espace d'échantillonnage est égale à 1.)
+        \item Pour toute suite dénombrable d'événements disjoints $(A_i)_{i \geq 1} \subseteq \mathcal{F}$ :
+        \[
+        P\left( \bigcup_{i=1}^{+\infty} A_i \right) = \sum_{i=1}^{+\infty} P(A_i)
+        \]
+    \end{itemize}
+\end{itemize}
+
+\subsection{Variable Aléatoire}
+
+Une variable aléatoire $ X $ est une fonction qui associe à chaque résultat d'une expérience aléatoire ($\Omega$) un nombre réel.
+
+\begin{itemize}
+    \item Une fonction mesurable $X : \Omega \rightarrow E$, où $(E, \mathcal{E})$ est un espace mesurable.
+    \item \textbf{Tribu sur l'espace d'arrivée}: Une collection d'événements (sous-ensembles) de $E$ qui satisfait certaines propriétés (comme la fermeture sous les unions et les compléments). 
+    \[
+    \mathcal{T} \subset \mathcal{P}(E)
+    \]
+    \[
+    \forall T \in \mathcal{T}, X^{-1}(T) \in \mathcal{F}
+    \]
+    % Peut-être écrire Loi de X comme dans les slides (changer la notation) ?
+    \item \textbf{Mesure image induite} : Pour tout $T \in \mathcal{E}$ :
+    \[
+    P_X(T) = P(X^{-1}(T))
+    \]
+    $P_X$ est la loi de $X$.
+\end{itemize}
+
+\section{Probabilité Conditionnelle et Indépendance}
+
+\subsection{Probabilité Conditionnelle}
+
+Si $P(B) > 0$, la probabilité d'un événement $A$ sachant que l'événement $B$ a eu lieu est donnée par :
+
+\[
+P(A \mid B) = \frac{P(A \cap B)}{P(B)}
+\]
+
+% Peut-être copier notation des slides?
+\subsection{Indépendance Mutuelle}
+
+Des variables aléatoires $X_1, X_2, \dotsc, X_n$ sont mutuellement indépendantes si, pour tout $A_1, A_2, \dotsc, A_n$ mesurables :
+
+\[
+P(X_1 \in A_1, X_2 \in A_2, \dotsc, X_n \in A_n) = \prod_{i=1}^n P(X_i \in A_i)
+\]
+
+\section{Variables Aléatoires Réelles}
+
+\subsection{Fonction de Masse}
+
+La fonction de masse pour une variable aléatoire réelle $X$ est définie par :
+
+\[
+p_X(x) = P(X = x)
+\]
+
+Elle donne la probabilité que la variable aléatoire $X$ prenne la valeur $x$.
+
+\subsection{Fonction de Répartition}
+
+La fonction de répartition, également appelée fonction de distribution cumulative, est donnée par :
+
+\[
+F_X(x) = P(X \leq x)
+\]
+
+Elle représente la probabilité que la variable aléatoire $X$ soit inférieure ou égale à une certaine valeur $x$.
+
+\subsection{Densité de Probabilité}
+
+La densité de probabilité décrit la distribution des probabilités sur l'ensemble des valeurs possibles de $X$. Pour les variables aléatoires continues, elle est calculée comme la dérivée de la fonction de répartition :
+
+\[
+p_{dX}(x) = \frac{dF_X(x)}{dx}
+\]
+
+La fonction de densité de probabilité doit être telle que l'intégrale sur l'ensemble des valeurs possibles soit égale à 1.
+
+\[
+\int_{-\infty}^{+\infty}p_{dX}(x)dx = 1
+\]
+
+\subsection{Espérance}
+
+L'espérance d'une variable aléatoire $X$ est la valeur moyenne attendue de $X$. Elle est donnée par :
+
+\subsection{Cas continu}
+
+\[
+E[X] = \int_{-\infty}^{+\infty} x \, p_X(x) \, dx = \int_{-\infty}^{+\infty} x \, dF_X(x)
+\]
+
+\subsection{Cas discret}
+
+\[
+E[X] = \sum_{x} x \, p_X(x)
+\]
+
+\section{Plusieurs Variables Aléatoires Réelles}
+
+On peut définer plusieurs variables aléatoires réelles par $ \mathbf{X} = (X_1, X_2, \dotsc, X_N) $, un vecteur de la fonction de $\Omega$ vers $\mathbb{R}^n$.
+
+\[
+\mathbf{X} = (X_1, X_2, \dotsc, X_n): \Omega \rightarrow \mathbb{R}^n
+\]
+
+\subsection{Fonction de répartition (jointe)}
+
+% Notation comme slides?
+Pour des variables aléatoires multiples $(X_1, X_2, \dotsc, X_n)$, la fonction de répartition jointe est donnée par :
+
+\[
+F_{X}(x_1, x_2, \dotsc, x_n) = P(X_1 \leq x_1, X_2 \leq x_2, \dotsc, X_n \leq x_n)
+\]
+
+Elle représente la probabilité que chaque variable $X_i$ soit inférieure ou égale à $x_i$.
+
+\subsection{Fonction de masse (jointe)}
+
+La fonction de masse jointe pour des variables discrètes $(X_1, X_2, \dotsc, X_n)$ est définie par :
+
+\[
+p_{X}(x_1, x_2, \dotsc, x_n) = P(X_1 = x_1, X_2 = x_2, \dotsc, X_n = x_n)
+\]
+
+Elle donne la probabilité conjointe que chaque variable $X_i$ prenne la valeur $x_i$.
+
+\subsection{Densité de probabilité (jointe)}
+
+La densité de probabilité jointe pour $(X_1, X_2, \dotsc, X_n)$ est définie par :
+
+\[
+p_{d\mathbf{X}}: x_1, x_2, \dotsc, x_n \mapsto \frac{\partial F_{\mathbf{X}}}{\partial x_1 \partial x_2 \dots \partial x_n}(x_1, x_2, \dotsc, x_n)
+\]
+
+\subsection{Espérance (jointe)}
+
+L'espérance d'une fonction de plusieurs variables aléatoires est donnée par :
+
+\begin{itemize}
+    \item \textbf{Cas continu} :
+    \[
+    E[f(X_1, X_2, \dotsc, X_n)] = \int_{-\infty}^{+\infty} \dotsb \int_{-\infty}^{+\infty} f(x_1, x_2, \dotsc, x_n) \, p_{X}(x_1, x_2, \dotsc, x_n) \, dx_1 \, dx_2 \dotsb dx_n
+    \]
+    
+    \item \textbf{Cas discret} :
+    \[
+    E[f(X_1, X_2, \dotsc, X_n)] = \sum_{x_1} \sum_{x_2} \dotsb \sum_{x_n} f(x_1, x_2, \dotsc, x_n) \, p_{X}(x_1, x_2, \dotsc, x_n)
+    \]
+\end{itemize}
+
+% Peut-être mettre les modeles graphiques ici, comme dans les slides?
+\section{Modèles graphiques}
+\dots
+
+\section{Moments et Variance}
+
+\subsection{Variance}
+
+La variance d'une variable aléatoire $X$ mesure la dispersion de $X$ autour de son espérance $E[X]$. Elle est définie par :
+
+\[
+\operatorname{Var}[X] = E\left[ (X - E[X])^2 \right]
+\]
+
+\subsection{Moment}
+
+Le moment d'ordre $k$ représente la dispersion de la variable aléatoire $X$, ce qui permet de caractériser différentes propriétés de la distribution, comme la moyenne ($k = 1$) et la variance ($k=2$).
+
+\[
+E[X^k]
+\]
+
+\subsection{Moment centré}
+
+\[
+E[(X-E[X])^k]
+\]
+\subsection{Linéarité de l'Espérance}
+
+L'espérance est une opération linéaire. Pour une somme pondérée de variables aléatoires, on a :
+
+\[
+E\left[ \sum_{i=1}^n a_i X_i \right] = \sum_{i=1}^n a_i E[X_i]
+\]
+
+où $a_i$ sont des constantes réelles.
+
+\subsection{Covariance}
+
+La covariance entre deux variables aléatoires $X$ et $Y$ est donnée par :
+
+\[
+\operatorname{Cov}(X, Y) = E\left[ (X - E[X])(Y - E[Y]) \right]
+\]
+
+Elle mesure la tendance conjointe de $X$ et $Y$ à dévier de leurs espérances respectives. La covariance est bilinéaire, ce qui implique que pour des combinaisons linéaires de variables, on a :
+
+\[
+\operatorname{Cov}\left( \sum_{i=1}^n a_i X_i, \sum_{j=1}^m b_j Y_j \right) = \sum_{i=1}^n \sum_{j=1}^m a_i b_j \operatorname{Cov}(X_i, Y_j)
+\]
+
+\section{Moments Conditionnels}
+
+\subsection{Espérance Conditionnelle}
+
+L'espérance conditionnelle de $X$ sachant $Y = y$ est définie par :
+
+\[
+E[X \mid Y = y] = \int_{-\infty}^{+\infty} x \, p_{X \mid Y}(x \mid y) \, dx
+\]
+
+où $p_{X \mid Y}(x \mid y)$ est la densité conditionnelle de $X$ donnée $Y = y$.
+
+\subsection{Variance Conditionnelle}
+
+La variance conditionnelle de $X$ sachant $Y = y$ est :
+
+\[
+\operatorname{Var}[X \mid Y = y] = E\left[ (X - E[X \mid Y = y])^2 \mid Y = y \right]
+\]
+
+\section{Loi de l'Espérance Totale}
+
+La loi de l'espérance totale permet d'exprimer l'espérance d'une variable aléatoire $X$ en fonction de l'espérance conditionnelle par rapport à une autre variable $Y$ :
+
+\[
+E[X] = E[E[X \mid Y]]
+\]
+
+\section{Loi de la Covariance Totale}
+
+De manière similaire, la covariance totale est donnée par :
+
+\[
+\operatorname{Cov}(X, Y) = \operatorname{Cov}\left( E[X \mid Z], E[Y \mid Z] \right) + E\left[ \operatorname{Cov}(X, Y \mid Z) \right]
+\]
+
+\section{Modèles Graphiques}
+
+Les modèles graphiques permettent de représenter les dépendances entre variables aléatoires au moyen de graphes probabilistes. Pour un ensemble de variables $X_1, X_2, \dotsc, X_n$, la probabilité conjointe peut être factorisée selon :
+
+\[
+p(X_1, X_2, \dotsc, X_n) = \prod_{i=1}^n P\left( X_i \mid \text{Parents}(X_i) \right)
+\]
+
+où $\text{Parents}(X_i)$ représente l'ensemble des variables dont $X_i$ dépend directement dans le graphe.
+
+
+\end{document}
