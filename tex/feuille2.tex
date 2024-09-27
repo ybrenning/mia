@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{mathtools}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+
+
+\title{MIA Feuille d’exercices numéro 2}
+\author{Yannick Brenning}
+
+\begin{document}
+
+\maketitle
+
+\vspace{0.5in}
+
+
+
+\subsection*{Exercice 2}
+\begin{enumerate}
+    \item 
+    \begin{flalign*}
+        & \text{On peut exprimer la probabilité d'une intersection d'évènements avec la formule} && \\
+        & \text{des probabilités composées:} && \\
+        & P(A_1 \cap \dots \cap A_n) = P(A_1) \cdot P(A_2 | A_1) \cdot \dots \cdot P(A_n | A_1 \cap \dots \cap A_{n-1}) && \\ && \\
+        & \text{On utilisant la modèle graphique, on peut simplifier les évènements indépendants.} && \\
+        & \text{Bien sûr que $TS$ est indépendant de tout les autres évènements, et $SlO, SuO$} && \\
+        & \text{sont indépendants entre eux.} && \\ && \\
+        & P(SlL, SuL, SlO, SuO, TS) && \\
+        & = P(TS) \cdot P(SlO) \cdot P(SuO) \cdot P(SlL|SlO, TS) \cdot P(SuL|SuO, TS) && \\
+    \end{flalign*}
+    \item 
+    Oui, parce que les valuers $ t, u $ et $ l $ contiennent implicitement l'information sur \\ $ P(SlL|SlO, TS) $ et $ P(SuL|SuO, TS) $. Cela ce voit dans les formules $ P(SlL = 1|SlO = a, TS = b) = a \lor b $ et $ P(SuL = 1|SuO = a, TS = b) = a \lor b $, qui sont equivalentes et directement liées à les valeurs de $ t, u $ et $ l $. \\ \\
+    On peut donc exprimer la factorisation de la manière suivante: \\
+    \begin{flalign*}
+        P(SlL, SuL, SlO, SuO, TS) =  t \cdot u \cdot l
+    \end{flalign*}
+    \item 
+    \begin{flalign*}
+        & P(TS = 1|SlL = 1) = \frac{P(TS=1, SlL=1)}{P(SlL=1)} && \\
+        & = \frac{P(SlL=1|TS=1) \cdot P(TS=1)}{P(SlL=1)} = \frac{P(TS=1)}{P(SlO=1) + P(TS=1) - P(SlO=1, TS=1)} && \\
+        & = \frac{P(TS=1)}{P(SlO=1) + P(TS=1) - P(SlO=1)P(TS=1)} = \frac{t}{l+t-l \cdot t}
+    \end{flalign*}
+    \item 
+    \begin{flalign*}
+        & P(SlO = 1|SlL = 1) = \frac{P(SlO, SlL)}{P(SlL)} && \\
+        & \frac{P(SlO) \cdot P(SlL)}{P(SlL} = P(SlO) = l
+    \end{flalign*}
+    \item 
+    \begin{flalign*}
+        & P(TS = 1|SlL = 1, SuL = 1) = \frac{P(TS, SlL, SuL)}{P(SlL, SuL)} && \\
+        & = \frac{P(TS) \cdot P(SlL|TS) \cdot P(SuL|TS)}{P(SlL) \cdot P(SuL)} = \frac{P(TS) \cdot }{}
+    \end{flalign*}
+\end{enumerate}
+
+
+\end{document}
