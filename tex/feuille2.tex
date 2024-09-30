@@ -46,21 +46,78 @@
     \end{flalign*}
     \item 
     \begin{flalign*}
-        & P(TS = 1|SlL = 1) = \frac{P(TS=1, SlL=1)}{P(SlL=1)} && \\
-        & = \frac{P(SlL=1|TS=1) \cdot P(TS=1)}{P(SlL=1)} = \frac{P(TS=1)}{P(SlO=1) + P(TS=1) - P(SlO=1, TS=1)} && \\
-        & = \frac{P(TS=1)}{P(SlO=1) + P(TS=1) - P(SlO=1)P(TS=1)} = \frac{t}{l+t-l \cdot t}
+        & P(TS = 1|SlL = 1) = \frac{P(TS=1, SlL=1)}{P(SlL=1)} && \text{Définition de la prob. cond.} \\
+        & = \frac{P(SlL=1|TS=1) \cdot P(TS=1)}{P(SlL=1)}
+    \end{flalign*}
+        Car $P(SlL=1|SlO=a, TS=b) = a \lor b,$ on voit que pour $ TS = 1$, la probabilité est toujours égale à 1, c'est-à-dire $P(SlL=1|TS=1)$ est l'événement certain. 
+    \begin{flalign*}
+        & = \frac{P(TS=1)}{P(SlO=1) + P(TS=1) - P(SlO=1, TS=1)} && \text{Définition de } P(A \text{ ou } B) \\
+        & = \frac{P(TS=1)}{P(SlO=1) + P(TS=1) - P(SlO=1)\cdot P(TS=1)} && \\
+        & = \frac{t}{l+t-l \cdot t}
     \end{flalign*}
     \item 
     \begin{flalign*}
-        & P(SlO = 1|SlL = 1) = \frac{P(SlO, SlL)}{P(SlL)} && \\
-        & \frac{P(SlO) \cdot P(SlL)}{P(SlL} = P(SlO) = l
+        & P(SlO = 1|SlL = 1) = \frac{P(SlO=1, SlL=1)}{P(SlL=1)} && \\
+        & \frac{P(SlL=1 | SlO=1) \cdot P(SlO=1)}{P(SlL=1)} && \\
+        & = \frac{1 \cdot P(SlO=1)}{P(SlL=1)} && \\
+        & = \frac{l}{l+t-l \cdot t}
     \end{flalign*}
     \item 
     \begin{flalign*}
-        & P(TS = 1|SlL = 1, SuL = 1) = \frac{P(TS, SlL, SuL)}{P(SlL, SuL)} && \\
-        & = \frac{P(TS) \cdot P(SlL|TS) \cdot P(SuL|TS)}{P(SlL) \cdot P(SuL)} = \frac{P(TS) \cdot }{}
+        & P(TS = 1|SlL = 1, SuL = 1) = \frac{P(TS=1, SlL=1, SuL=1)}{P(SlL=1, SuL=1)} && \\
+        & = \frac{P(TS=1) \cdot P(SlL=1|TS=1) \cdot P(SuL=1|TS=1)}{P(SlL=1, SuL=1)} && \\
+        & = \frac{P(TS=1)}{P(SlL=1, SuL=1)}
     \end{flalign*}
+    On peut calculer $P(SlL=1, SuL=1)$ en pensant à les opérateurs logiques. Si les deux sont en retard, soit $TS$, soit $SlO$ et $SuO$, ou bien les trois on eu lieu. 
+    \begin{flalign*}
+        & \frac{P(TS=1)}{P(SlL=1, SuL=1)} = \frac{t}{l\cdot u + t + l\cdot u \cdot t} &&
+    \end{flalign*}
+    \item 
+    \begin{flalign*}
+        & P(SlO=1|SlL=1,SuL=1) = \frac{P(SlO=1, SlL=1, SuL=1)}{P(SlL=1, SuL=1)} && \\
+        & = \frac{P(SlO=1) \cdot P(SlL=1|SlO=1) \cdot P(SuL=1)}{P(SlL=1, SuL=1)} && \\
+        & = \frac{l \cdot (u+t-u \cdot t)}{l\cdot u + t + l\cdot u \cdot t}
+    \end{flalign*}
+    \item 
+    Pour répondre à cette question, il faut calculer $P(TS=1|SlL=1)$ et $P(SlO=1|SlL=1)$ et les comparer.
+    \begin{flalign*}
+        & P(TS=1|SlL=1) = \frac{P(TS=1, SlL=1)}{P(SlL=1)} && \\
+        & = \frac{P(TS) \cdot P(SlL=1 | TS=1)}{P(SlL=1)} && \\
+        & = \frac{P(TS)}{P(SlL=1)} = \frac{t}{l + t - l \cdot t} && \\
+        & = \frac{0.1}{0.5+0.1-0.5 \cdot 0.1} \approx 0.18 && \\ && \\
+        & P(SlO=1|SlL=1) = \frac{P(SlO=1, SlL=1)}{P(SlL=1)} && \\
+        & = \frac{P(SlO=1) \cdot P(SlL=1 | SlO=1)}{P(SlL=1)} && \\
+        & = \frac{P(SlO=1)}{P(SlL=1)} = \frac{l}{l+t-l \cdot t} && \\
+        & = \frac{0.5}{0.5+0.1-0.5 \cdot 0.1} \approx 0.91
+    \end{flalign*}
+    Alors dans ce cas, ``Sleepy overslept'' est plus probable.
+    \item 
+    On fait les même calculations que ci-dessus avec $u = 0.01$ au lieu de $ l = 0.5$ pour obtenir $P(TS=1|SuL=1) \approx 0.92 $ et $P(SuO=1|SuL=1) \approx 0.09 $, ce qui nous dit que ``There is a train strike'' est plus probable.
+    \item 
+    La probabilité calculé dans la question précédante devient $P(SuO=1|SuL=1) \approx 0.71$.
 \end{enumerate}
 
+\subsection*{Exercice 6}
+
+\begin{enumerate}
+    \item 
+    \begin{flalign*}
+        & b(\hat{f}) = \mathbb{E}(\hat{f}) - f && \\
+        & = \mathbb{E}(\frac{1}{n} \sum_{i=1}^n X_i) - \mu && \\
+        & = [\frac{1}{n} \sum_{i=1}^n \mathbb{E}(X_i)] - \mu && \text{Linéarité de l'espérance} \\
+        & = [\frac{1}{n} \cdot n \cdot \mu] - \mu && \text{$X_i$ ont les mêmes espérances}\\
+        & = \mu - \mu = 0
+    \end{flalign*}
+    \begin{flalign*}
+        & \text{Var}(\hat{f}) = \mathbb{E}[(\hat{f} - \mathbb{E}(\hat{f}))^2] && \\
+        & = \mathbb{E}[(\hat{f} - \mu)^2] && \\
+        & = \mathbb{E}[(\frac{1}{n}\sum_{i=1}^n X_i - \mu)^2] && \\
+        & = \frac{1}{n^2}\sum_{i=1}^n \mathbb{E}[(X_i - \mu)^2]
+    \end{flalign*}
+    \item 
+    \begin{flalign*}
+        & b(\hat{V}) = \mathbb{E}[\frac{1}{n}\sum_{i=1}^n(X_i-\hat{\mu})^2] - \mathbb{E}[(\hat{f} - \mathbb{E}(\hat{f})^2] && \\
+    \end{flalign*}
+\end{enumerate}
 
 \end{document}
