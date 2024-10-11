@@ -1,0 +1,426 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage{mathtools}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+
+
+\title{MIA Feuille d’exercices numéro 3}
+\author{Yannick Brenning}
+
+\begin{document}
+
+\maketitle
+
+\vspace{0.5in}
+
+
+
+\subsection*{Exercice 5}
+\begin{enumerate}
+    \item 
+    \begin{flalign*}
+        & B = (3 e_1 - 2 e_2, e_1 + e_2) \Leftrightarrow ((3, -2), (1, 1)) && \\ && \\
+        & \text{Il suffit de montrer que la famille de vecteurs $B$ est linéairement indépendant:} && \\ && \\
+        & 3 a_1 + a_2 = 0 && \\
+        & -2 a_1 + a_2 = 0 && \\
+        & \Rightarrow -3a_1 = a_2 = 2a_1 && \\
+        & \Rightarrow a_1 = a_2 = 0 && \\ && \\
+        & \text{La seule combinaison linéaire des deux vecteurs égale au vecteur zéro est celle} && \\ 
+        & \text{dont tous les coéfficients sont nuls. Les deux vecteurs sont alors linéairement} && \\
+        & \text{indépendants et forment une base dans $\mathbb{R}^2$.}
+    \end{flalign*}
+    \item 
+    \begin{flalign*}
+        & v = v_1 \begin{pmatrix}
+            1 \\
+            0
+        \end{pmatrix}
+        +v_2 \begin{pmatrix}
+            0 \\
+            1
+        \end{pmatrix}
+        = \begin{pmatrix}
+            v_1 \\
+            0
+        \end{pmatrix} +
+        \begin{pmatrix}
+            0 \\
+            v_2
+        \end{pmatrix} 
+        = \begin{pmatrix}
+            v_1 \\
+            v_2
+        \end{pmatrix} && \\
+        & \text{Pour } P = \begin{pmatrix}
+            3 & -2 \\
+            1 & 1
+        \end{pmatrix}, \text{ on obtient }
+        \begin{pmatrix}
+            3 & -2 \\
+            1 & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            v_1 \\
+            v_2
+        \end{pmatrix}
+        = \begin{pmatrix}
+            3v_1 - 2v_2 \\
+            v_1 + v_2
+        \end{pmatrix}, && \\
+        & \text{un vecteur de coordonnées de $v$ dans la base $B$.}
+    \end{flalign*}
+    \item 
+    \begin{flalign*}
+        & P \begin{pmatrix}
+            v_1 \\
+            v_2
+        \end{pmatrix} 
+        = \begin{pmatrix}
+            3 & -2 \\
+            1 & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            -1 \\
+            1
+        \end{pmatrix} 
+        = \begin{pmatrix}
+            -1 \\
+            2
+        \end{pmatrix} && \\
+    \end{flalign*}
+\end{enumerate}
+
+\subsection*{Exercice 7}
+
+\begin{enumerate}
+    \item 
+    \begin{enumerate}
+        \item 
+        En utilisant la notation de séance 6, on peut écrire:
+        \begin{flalign*}
+            & C = AB = \sum_i a_i \Tilde{b}_i^T
+        \end{flalign*}
+        Avec $ a_i $ la $i$-ième colonne de la matrice de gauche et $ \Tilde{b}_i^T $ la transpose de la $i$-ième ligne de la matrice de droite. Dans ce cas, cela donne une combinaison linéaire des colonnes de la matrice de gauche avec les valeurs scalaires du vecteur de droite.
+        \begin{flalign*}
+            \begin{pmatrix}
+                3 \\
+                2
+            \end{pmatrix} \cdot 4
+            + \begin{pmatrix}
+                6 \\
+                1
+            \end{pmatrix} \cdot 1
+            + \begin{pmatrix}
+                2 \\
+                3
+            \end{pmatrix} \cdot 1
+            = \begin{pmatrix}
+                20 \\
+                12
+            \end{pmatrix}
+        \end{flalign*}
+        \item 
+        \begin{flalign*}
+            C = AB = \begin{pmatrix}
+                \Tilde{a}_1^T B \\
+                \vdots \\
+                \Tilde{a}_m^T B
+            \end{pmatrix}
+        \end{flalign*}
+        Car la matrice de droite $B$ est un vecteur dans ce cas, le resultat de cette expression devient une matrice contenant deux produits scalaires. 
+        \begin{flalign*}
+            \begin{pmatrix}
+                \begin{pmatrix}
+                    3 & 6 & 2
+                \end{pmatrix}
+                \begin{pmatrix}
+                    4 \\
+                    1 \\
+                    1
+                \end{pmatrix} \\ \\
+                \begin{pmatrix}
+                    2 & 1 & 3
+                \end{pmatrix}
+                \begin{pmatrix}
+                    4 \\
+                    1 \\
+                    1
+                \end{pmatrix}
+            \end{pmatrix}
+            = \begin{pmatrix}
+                3 \cdot 4 + 6 \cdot 1 + 2 \cdot 1 \\
+                2 \cdot 4 + 1 \cdot 1 + 3 \cdot 1
+            \end{pmatrix}
+            = \begin{pmatrix}
+                20 \\
+                12
+            \end{pmatrix}
+        \end{flalign*}
+    \end{enumerate}
+    \item 
+    \begin{enumerate}
+        \item 
+        \begin{align*}
+            C & = AB = \begin{pmatrix}
+                A b_1 & \dots & A b_p
+            \end{pmatrix} && \\ && \\
+            & = \begin{pmatrix}
+                A 
+                \begin{pmatrix}
+                    4 \\
+                    1 \\
+                    1
+                \end{pmatrix}
+                & A
+                \begin{pmatrix}
+                    5 \\
+                    2 \\
+                    -1
+                \end{pmatrix}
+            \end{pmatrix}
+            = \begin{pmatrix}
+                20 & 25 \\
+                12 & 9
+            \end{pmatrix}
+        \end{align*}
+        \item 
+        \begin{align*}
+            C = AB = \begin{pmatrix}
+                \Tilde{a}_1^T B \\
+                \vdots \\
+                \Tilde{a}_m^T B
+            \end{pmatrix} && \\ && \\
+            \begin{pmatrix}
+                \begin{pmatrix}
+                    3 & 6 & 2
+                \end{pmatrix}
+                B \\ \\
+                \begin{pmatrix}
+                    2 & 1 & 3
+                \end{pmatrix}
+                B
+            \end{pmatrix}
+            = \begin{pmatrix}
+                20 & 25 \\
+                12 & 9 
+            \end{pmatrix}
+        \end{align*}
+        \item 
+        \begin{align*}
+            C = AB = \begin{pmatrix}
+                a_1 & \Tilde{b}_1^T 
+            \end{pmatrix}
+            + \begin{pmatrix}
+                a_2 & \Tilde{b}_2^T
+            \end{pmatrix}
+            + \begin{pmatrix}
+                a_3 & \Tilde{b}_3^T
+            \end{pmatrix} && \\ && \\
+            \begin{pmatrix}
+                12 & 15 \\
+                8 & 10
+            \end{pmatrix}
+            + \begin{pmatrix}
+                6 & 12 \\
+                1 & 2
+            \end{pmatrix}
+            + \begin{pmatrix}
+                2 & -2 \\
+                3 & -3
+            \end{pmatrix}
+            = \begin{pmatrix}
+                20 & 25 \\
+                12 & 9
+            \end{pmatrix}
+        \end{align*}
+        \item 
+        \begin{align*}
+            C = AB = 
+            \begin{pmatrix}
+                \langle \Tilde{a}_1, b_1 \rangle & \langle \Tilde{a}_1, b_2 \rangle \\
+                \langle \Tilde{a}_2, b_1 \rangle & \langle \Tilde{a}_2, b_2 \rangle
+            \end{pmatrix} \\ \\
+            \begin{pmatrix}
+                \begin{pmatrix}
+                    3 \\
+                    6 \\
+                    2
+                \end{pmatrix} \cdot
+                \begin{pmatrix}
+                    4 \\
+                    1 \\
+                    1
+                \end{pmatrix} &
+                \begin{pmatrix}
+                    3 \\
+                    6 \\
+                    2
+                \end{pmatrix} \cdot
+                \begin{pmatrix}
+                    5 \\
+                    2 \\
+                    -1
+                \end{pmatrix} \\ \\
+                \begin{pmatrix}
+                    2 \\
+                    1 \\
+                    3
+                \end{pmatrix} \cdot
+                \begin{pmatrix}
+                    4 \\
+                    1 \\
+                    1
+                \end{pmatrix} &
+                \begin{pmatrix}
+                    2 \\
+                    1 \\
+                    3
+                \end{pmatrix} \cdot
+                \begin{pmatrix}
+                    5 \\
+                    2 \\
+                    -1
+                \end{pmatrix}
+            \end{pmatrix}
+            = \begin{pmatrix}
+                20 & 25 \\
+                12 & 9
+            \end{pmatrix}
+        \end{align*}
+    \end{enumerate}
+\end{enumerate}
+
+\subsection*{Exercice 8}
+
+\begin{enumerate}
+    \item 
+    On dénote les vecteurs colonne de $ A $ par $ a_i $, et $x_i$ sont les valeurs scalaires (les coefficients diagonaux). \\ 
+    \begin{align*}
+        A \text{diag}(x_1, \dotsc, x_n) & = 
+        \begin{pmatrix}
+            a_{11} & \dots & a_{1n} \\
+            \vdots & \ddots & \vdots \\
+            a_{p1} & \dots & a_{pn}
+        \end{pmatrix}
+        \begin{pmatrix}
+            x_1 & & \\
+             & \ddots & \\
+             & & x_n
+        \end{pmatrix} \\ \\
+        & = \begin{pmatrix}
+            a_1 & \dots & a_n
+        \end{pmatrix}
+        \begin{pmatrix}
+            x_1 & & \\
+             & \ddots & \\
+             & & x_n
+        \end{pmatrix} \\ \\
+        & = \begin{pmatrix}
+            a_1 x_1 & \dots & a_n x_n
+        \end{pmatrix}
+    \end{align*}
+    \item 
+    \begin{flalign*}
+        \text{diag}(x_1, \dotsc, x_n) B & = 
+        \begin{pmatrix}
+            x_1 & & \\
+             & \ddots & \\
+             & & x_n
+        \end{pmatrix} 
+        \begin{pmatrix}
+            b_{11} & \dots & b_{1p} \\
+            \vdots & \ddots & \vdots \\
+            b_{n1} & \dots & b_{np}
+        \end{pmatrix} \\ \\
+        & = \begin{pmatrix}
+            x_1 & & \\
+             & \ddots & \\
+             & & x_n
+        \end{pmatrix} 
+        \begin{pmatrix}
+            \Tilde{b}_1^T \\
+            \vdots \\
+            \Tilde{b}_n^T
+        \end{pmatrix} \\ \\
+        & = \begin{pmatrix}
+            x_1 \Tilde{b}_1^T \\
+            \vdots \\
+            x_n \Tilde{b}_n^T
+        \end{pmatrix}
+    \end{flalign*}
+\end{enumerate}
+
+\subsection*{Exercice 15}
+
+\begin{enumerate}
+    \item 
+    \begin{align*}
+        AV & = U \Sigma && \\
+        AVV^T & = U \Sigma V^T && \text{Multiplication à droite par $V^T$}\\
+        \Leftrightarrow AI_n & = U \Sigma V^T && \text{Orthogonalité de $V$} \\
+        \Leftrightarrow A & = U \Sigma V^T && \text{Multiplication par matrice identité}
+    \end{align*}
+    \begin{align*}
+        AV & = U \Sigma && \\
+        U^T A V & = U^T U \Sigma && \text{Multiplication à gauche par $U^T$} \\
+        \Leftrightarrow I_m \Sigma &= U^T A V && \text{Orthogonalité de $U$} \\
+        \Leftrightarrow \Sigma & = U^T A V && \text{Multiplication par matrice identité}
+    \end{align*}
+    \item 
+    \begin{align*}
+        AV &= U \Sigma && \\
+        \Leftrightarrow \begin{pmatrix}
+            Av_1 & \dots & Av_n 
+        \end{pmatrix} & = U \Sigma && \text{Exercice 7.2a} \\
+        \Leftrightarrow \begin{pmatrix}
+            Av_1 & \dots & Av_n 
+        \end{pmatrix} & = U \text{diag}(\sigma_1, \dotsc, \sigma_r, 0 \dotsc, 0) && \\
+        \Leftrightarrow \begin{pmatrix}
+            Av_1 & \dots & Av_n 
+        \end{pmatrix} & = \begin{pmatrix}
+            u_1 \sigma_1 & \dots & u_r \sigma_r & u_{r+1} \cdot 0 & \dots & u_n \cdot 0
+        \end{pmatrix} && \text{Exercice 8.1} \\
+        \Leftrightarrow \forall i \in \{1, \dotsc, r\}: Av_i & = u_i \sigma_i  
+    \end{align*}
+    \item 
+    \begin{align*}
+        \begin{pmatrix}
+               Av_1 & \dots & Av_n 
+        \end{pmatrix} & = \begin{pmatrix}
+            u_1 \sigma_1 & \dots & u_r \sigma_r & u_{r+1} \cdot 0 & \dots & u_n \cdot 0
+        \end{pmatrix} &&  \\
+        \Leftrightarrow \begin{pmatrix}
+            Av_{r+1} & \dots & Av_n
+        \end{pmatrix}
+        & = \begin{pmatrix}
+            u_{r+1} \cdot 0 & \dots & u_{n} \cdot 0
+        \end{pmatrix} && \\
+        \Leftrightarrow \begin{pmatrix}
+            Av_{r+1} & \dots & Av_n
+        \end{pmatrix}
+        & = \begin{pmatrix}
+            0 & \dots & 0
+        \end{pmatrix} && \\
+        \Leftrightarrow \forall i \in \{r+1, \dotsc, n\}: Av_i & = 0
+    \end{align*}
+    \item 
+    \begin{align*}
+        AV = U\Sigma & \Leftrightarrow A = U \Sigma V^T && \\
+        \Leftrightarrow A & = U \begin{pmatrix}
+            \sigma_1 v_1^T & \dots & \sigma_r v_r^T
+        \end{pmatrix} && \\
+        \Leftrightarrow A & = \sum_{i = 1}^r u_i \sigma_i v_i^T && \text{Exercice 7.1a} \\
+        \Leftrightarrow A & = \sum_{i = 1}^r \sigma_i u_i v_i^T && \text{Loi commutative pour les coéfficients réels $\sigma_i$}
+    \end{align*}
+\end{enumerate}
+\end{document}
